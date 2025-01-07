@@ -2,18 +2,21 @@
 
 import { Toaster } from "sonner";
 import { ThemeProvider, useTheme } from "next-themes";
+import { ConvexClientProvider } from "./convex-client-provider";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider
-      enableSystem
-      attribute="class"
-      defaultTheme="system"
-      disableTransitionOnChange
-    >
-      {children}
-      <ToasterProvider />
-    </ThemeProvider>
+    <ConvexClientProvider>
+      <ThemeProvider
+        enableSystem
+        attribute="class"
+        defaultTheme="system"
+        disableTransitionOnChange
+      >
+        {children}
+        <ToasterProvider />
+      </ThemeProvider>
+    </ConvexClientProvider>
   );
 }
 
